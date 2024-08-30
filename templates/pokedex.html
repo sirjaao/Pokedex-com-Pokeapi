@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://img.freepik.com/vetores-gratis/fundo-azul-com-efeito-de-zoom-gradiente_23-2149762303.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80%;
+            max-width: 1200px;
+            gap: 20px;
+        }
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+            background-color: rgba(8, 0, 0, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+        .form-container select {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            color: #000;
+            width: 100%;
+        }
+        button {
+            margin-top: 10px;
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e60000;
+        }
+        .pokemon-info {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        .pokemon-info img {
+            width: 300px;
+            height: auto;
+            object-fit: contain;
+        }
+        .pokemon-info div {
+            display: flex;
+            flex-direction: column;
+        }
+        .logo {
+            width: 300px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="form-container">
+            <img src="https://archives.bulbagarden.net/media/upload/4/4b/Pok%C3%A9dex_logo.png" alt="Pokédex Logo" class="logo">
+            <form method="post">
+                <p>Selecione um Pokémon:</p>
+                <select name="nome">
+                    {% for pokemon_name in pokemon_list %}
+                    <option value="{{ pokemon_name }}">{{ pokemon_name.capitalize() }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit">Buscar</button>
+            </form>
+        </div>
+
+        {% if pokemon %}
+        <div class="pokemon-info">
+            <img src="{{ pokemon.imagem }}" alt="{{ pokemon.nome }}">
+            <div>
+                <h2>{{ pokemon.nome }}</h2>
+                <p><strong>Tipo(s):</strong> {{ pokemon.tipos | join(', ') }}</p>
+                <p><strong>Altura:</strong> {{ pokemon.altura }} m</p>
+                <p><strong>Peso:</strong> {{ pokemon.peso }} kg</p>
+                <p><strong>Habilidades:</strong></p>
+                <ul>
+                    {% for habilidade in pokemon.habilidades %}
+                    <li>{{ habilidade }}</li>
+                    {% endfor %}
+                </ul>
+                <p><strong>Movimentos:</strong></p>
+                <ul>
+                    {% for movimento in pokemon.movimentos[:4] %}
+                    <li>{{ movimento }}</li>
+                    {% endfor %}
+                </ul>
+                <p><strong>Descrição:</strong> {{ pokemon.descricao }}</p>
+                <p><strong>Locais:</strong></p>
+                <ul>
+                    {% for local in pokemon.locais[:6] %}
+                    <li>{{ local }}</li>
+                    {% endfor %}
+                </ul>
+                <p><strong>Evoluções:</strong></p>
+                <ul>
+                    {% for evolucao in pokemon.evolucoes %}
+                    <li>{{ evolucao }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
