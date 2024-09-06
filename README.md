@@ -19,7 +19,7 @@ HTML
 
 CSS
 
-JavaScript
+Python
 
 PokéAPI
 
