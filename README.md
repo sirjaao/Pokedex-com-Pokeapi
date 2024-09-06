@@ -31,7 +31,7 @@ bash
 
 Copiar código
 
-git clone https://github.com/usuario/pokedex.git
+git clone https://github.com/sirjaao/Pokedex-com-Pokeapi.git
 
 abra o prompt de comando e digite "python pokemon.py" e acesse o servidor
 
