@@ -22,9 +22,9 @@ Python
 
 PokéAPI
 
-Instruções de Uso
+# Instruções de Uso
 
-# Clone este repositório:
+Clone este repositório:
 
 bash
 
