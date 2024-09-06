@@ -11,7 +11,6 @@ Informações Detalhadas: Mostra dados como habilidades, tipos e estatísticas d
 
 Imagens: Exibe imagens dos Pokémon diretamente da API.
 
-Layout Responsivo: A página é projetada para ser visualizada em diferentes dispositivos.
 
 # Tecnologias
 
